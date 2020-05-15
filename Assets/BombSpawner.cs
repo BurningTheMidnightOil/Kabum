@@ -6,6 +6,8 @@ public class BombSpawner : MonoBehaviour
 {
     [SerializeField] GameObject bomb;
     [SerializeField] float timeBetweenBombs = 1f;
+
+    [SerializeField] AudioSource audio;
     void Start()
     {
         StartCoroutine(SpawnBomb());
@@ -14,6 +16,7 @@ public class BombSpawner : MonoBehaviour
     IEnumerator SpawnBomb (){
         while(true){
             yield return new WaitForSeconds(timeBetweenBombs);
+            audio.Play();
             Instantiate(bomb, gameObject.transform.position, Quaternion.identity);
         }
     }
