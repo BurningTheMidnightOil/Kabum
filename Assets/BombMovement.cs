@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class BombMovement : MonoBehaviour
 {
-    [SerializeField] float movementSpeed = 0.03f;
+    [SerializeField] float movementSpeed = 30f;
     [SerializeField] float limit = 0.1f;
     [SerializeField] Sprite explosion;
     [SerializeField] AudioSource audio;
     bool exploding = false;
+
+    void Start(){
+        movementSpeed = movementSpeed * Random.Range(0.5f, 1.0f);
+    }
     void Update()
     {
         if(ReachedEnd()){
@@ -17,7 +21,7 @@ public class BombMovement : MonoBehaviour
                 StartCoroutine(BombExplosion());
             }
         } else {
-            gameObject.transform.position += new Vector3(0, -movementSpeed, 0);
+            transform.Translate(Vector3.down * Time.deltaTime * movementSpeed);
         }
     }
 
