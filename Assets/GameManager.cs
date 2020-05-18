@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] int numberOfLives = 3;
     [SerializeField] GameObject gameStartScreen;
+    [SerializeField] GameObject leftButton;
+    [SerializeField] GameObject rightButton;
     int score = 0;
 
     public delegate void OnLoseLife(int numberOfLives);
@@ -86,6 +88,8 @@ public class GameManager : MonoBehaviour
 
     void GameOver(){
         Time.timeScale = 0;
+        leftButton.SetActive(false);
+        rightButton.SetActive(false);
         if (call_OnGameOver_Events != null)
         {
             call_OnGameOver_Events();
@@ -99,9 +103,15 @@ public class GameManager : MonoBehaviour
     public void StartGame(){
         Time.timeScale = 1;
         gameStartScreen.SetActive(false);
+        leftButton.SetActive(true);
+        rightButton.SetActive(true);
         if (call_OnStartGame_Events != null)
         {
             call_OnStartGame_Events();
         }
+    }
+
+    public void QuitGame(){
+        Application.Quit();
     }
 }

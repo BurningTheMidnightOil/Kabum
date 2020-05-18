@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5336494657c7e0f47880164efa41b96c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 0.03
+  movementSpeed: 6
   limit: 0.1
   explosion: {fileID: 21300000, guid: 593a4147e92092e45a6e9087bc2345e8, type: 3}
   audio: {fileID: 4866495490682247770}
